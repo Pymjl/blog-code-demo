@@ -532,5 +532,5 @@ Validation failed for argument [0] in public cuit.epoch.jsr303.result.Result<jav
 
 `JSR 303`能够帮助我们从繁琐的`if` `else if`的陷进中跳出来 ，能够极大的减少我们的代码量，也可以让我们更优雅的进行鉴权。平时大家在写项目的时候应该注意多使用注解的方式来检验数据，而不是if else，更不能参数校验都不做。
 
-好啦，我的介绍
+好啦，我的介绍到这里就结束了。快于这次代码演示的测试样例都可以在我的仓库里面找到：[gitee](https://gitee.com/pymjl_0/blog-code-demo)
 
