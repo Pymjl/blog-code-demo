@@ -22,4 +22,8 @@ public class MainTest {
         System.out.println("hessianLength: " + hessianLength);
         System.out.println("protostuffLength: " + protostuffLength);
     }
+
+    @Test
+    void test() {
+    }
 }
