@@ -24,20 +24,17 @@ public class XmlReader {
     }
 
     public static void parse() {
-        // students的内容为上面所示XML代码内容
+        // Spring.xml的内容为上面所示XML代码内容
         File file = new File("C:\\Users\\Admin\\JavaProjects\\blog-code-demo\\xml-parse\\src\\main\\resources\\spring.xml");
         try {
             // 创建文档解析的对象
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-
             // 解析文档，形成文档树，也就是生成Document对象
             Document document = builder.parse(file);
-
             // 获得根节点
             Element rootElement = document.getDocumentElement();
             System.out.printf("Root Element: %s\n", rootElement.getNodeName());
-
             // 获得根节点下的所有子节点
             NodeList students = rootElement.getChildNodes();
             for (int i = 0; i < students.getLength(); i++) {
@@ -56,8 +53,15 @@ public class XmlReader {
                         Node child = childNodes.item(j);
                         if (child.getNodeType() == Node.ELEMENT_NODE) {
                             Element eChild = (Element) child;
-                            System.out.printf("  sub Element %s:  name= %s value= %s\n", eChild.getNodeName(), eChild.getAttribute("name"),
-                                    eChild.getAttribute("value"));
+                            String value = eChild.getAttribute("value");
+                            String ref = eChild.getAttribute("ref");
+                            if (value != null && value.length() > 0) {
+                                System.out.printf("  sub Element %s:  name= %s value= %s\n", eChild.getNodeName(),
+                                        eChild.getAttribute("name"), value);
+                            } else {
+                                System.out.printf("  sub Element %s:  name= %s ref= %s\n", eChild.getNodeName(), eChild.getAttribute("name"),
+                                        ref);
+                            }
                         }
                     }
                 }
