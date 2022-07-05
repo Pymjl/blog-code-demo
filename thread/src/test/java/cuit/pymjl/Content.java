@@ -2,6 +2,7 @@ package cuit.pymjl;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -46,5 +47,10 @@ public class Content {
     @Test
     void testCopyOnWriteList() {
         CopyOnWriteArrayList<Integer> list = new CopyOnWriteArrayList<>();
+        list.add(1);
+        list.get(0);
+        list.add(2);
+        list.set(1, 3);
+        System.out.println(Arrays.toString(list.toArray()));
     }
 }
