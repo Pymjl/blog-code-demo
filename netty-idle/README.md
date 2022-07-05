@@ -593,12 +593,9 @@ public class ClientMain {
 ![image.png](https://pymjl.oss-cn-shanghai.aliyuncs.com/picgo/1657001337141-66dcf467-9d65-4bce-8b63-5b56444d55ee.png)
 
 #### 小结
-通过观察控制台输出可知，客户端先向服务端发送数据，然后随即休眠了0~20秒，客户端休眠超过5秒就会触发读写空闲，向服务端发送`PING`心跳包，而服务端在收到服务`PING`后也会向客户端发送`PONG`心跳包。当服务端超过10秒没接收到客户端的消息，就会触发读空闲，然后关闭连接。当连接被关闭，客户端这边会触发`channelInactive()`方法，进行重新连接
-好啦，关于Netty心跳机制的介绍就到这里，你可以点击[这里](https://gitee.com/pymjl_0/blog-code-demo/tree/master/netty-idle) 克隆本篇博客完整的源代码
 
-如果觉得写得还不错就请点个赞吧~
+通过观察控制台输出可知，客户端先向服务端发送数据，然后随即休眠了0\~20秒，客户端休眠超过5秒就会触发读写空闲，向服务端发送`PING`心跳包，而服务端在收到服务`PING`后也会向客户端发送`PONG`心跳包。当服务端超过10秒没接收到客户端的消息，就会触发读空闲，然后关闭连接。当连接被关闭，客户端这边会触发`channelInactive()`方法，进行重新连接
 
-你的点赞、关注就是对我最大的鼓励
+好啦，关于Netty心跳机制的介绍就到这里，你可以点击 [这里](https://gitee.com/pymjl_0/blog-code-demo/tree/master/netty-idle) 克隆本篇博客完整的源代码 如果觉得写得还不错就请点个赞吧~ 你的点赞、关注就是对我最大的鼓励
 
-参考文章：
- [这样讲Netty中的心跳机制，还有谁不会？](https://zhuanlan.zhihu.com/p/380225300)
+参考文章： [这样讲Netty中的心跳机制，还有谁不会？](https://zhuanlan.zhihu.com/p/380225300)
