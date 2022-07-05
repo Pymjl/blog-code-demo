@@ -16,6 +16,7 @@
 2. [Kryo、Hessian、Protostuff序列化方式对比](./serialize-methods/README.md)
 3. [ThreadLocal详解](./thread/README.md)
 4. [Java中的XML解析](./xml-parse/README.md)
+5. [Netty心跳机制详解](./netty-idle/README.md)
 
 #### 使用说明
 
