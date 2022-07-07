@@ -8,6 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAdder;
+import java.util.concurrent.locks.LockSupport;
 
 /**
  * @author Pymjl
@@ -53,4 +54,28 @@ public class Content {
         list.set(1, 3);
         System.out.println(Arrays.toString(list.toArray()));
     }
+
+    @Test
+    void testLockSupport() throws InterruptedException {
+        // 1. 创建一个子线程
+        Thread thread = new Thread(() -> {
+            System.out.println("child thread begin park!");
+            // 2. 循环判断线程是否被中断，防止虚假唤醒
+            while (!Thread.currentThread().isInterrupted()) {
+                LockSupport.park();
+            }
+            // 3. 如果被中断，则打印提示信息
+            System.out.println("child thread unpark!");
+        });
+
+        // 4. 启动子线程
+        thread.start();
+        // 5. 主线程睡眠1秒
+        Thread.sleep(1000);
+        // 6. 打印提示信息
+        System.out.println("main thread begin unpark!");
+        // 7. 打断子线程，让子线程立即返回
+        thread.interrupt();
+    }
+
 }
