@@ -1,9 +1,6 @@
 package cuit.pymjl.thread;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.ReentrantLock;
@@ -25,6 +22,16 @@ public class Main {
         Condition condition = lock.newCondition();
         ConcurrentLinkedQueue<Integer> queue = new ConcurrentLinkedQueue<>();
         queue.offer(1);
+        ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(10);
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        executorService.execute(() -> {
+            lock.lock();
+            try {
+                System.out.println("lock");
+            } finally {
+                lock.unlock();
+            }
+        });
         Main main = new Main();
         main.test();
     }
