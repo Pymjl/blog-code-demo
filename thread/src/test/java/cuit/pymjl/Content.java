@@ -2,7 +2,9 @@ package cuit.pymjl;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -53,6 +55,12 @@ public class Content {
         list.add(2);
         list.set(1, 3);
         System.out.println(Arrays.toString(list.toArray()));
+    }
+
+    @Test
+    void testTree() {
+        Deque<Integer> deque = new ArrayDeque<>();
+
     }
 
     @Test
