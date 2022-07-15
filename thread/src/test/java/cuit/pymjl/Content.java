@@ -86,4 +86,9 @@ public class Content {
         thread.interrupt();
     }
 
+    @Test
+    void testAl() {
+        System.out.println(1 << 2);
+    }
+
 }
